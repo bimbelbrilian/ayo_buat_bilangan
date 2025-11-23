@@ -1,0 +1,1353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Orientation Warning for Mobile (Base Style - Hidden by default) */
+.orientation-warning {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 20000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.orientation-warning i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #FFD700;
+    animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.orientation-warning h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.orientation-warning p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    max-width: 80%;
+}
+
+/* Main Menu */
+.main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease;
+    padding: 20px;
+}
+
+.main-menu.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu-content {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E3F2FD 100%);
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border: 4px solid #667eea;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    
+    /* --- PERUBAHAN UNTUK 80% LAYAR --- */
+    max-width: 80vw; /* Lebar Maksimum 80% dari Viewport Width */
+    max-height: 80vh; /* Tinggi Maksimum 80% dari Viewport Height */
+    overflow-y: auto; /* Penting: Memungkinkan scroll jika tombol terlalu banyak */
+}
+
+/* --- TATA LETAK MENU TITLE BARU (BIRU NEON) --- */
+.menu-title {
+    /* Style Dasar */
+    font-size: clamp(2.5rem, 6vw, 4rem); 
+    font-weight: 900;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    
+    /* 1. Warna Depan Huruf (Fill) - BIRU NEON CERAH (SOLID COLOR) */
+    color: #00BCD4; /* Bright Cyan/Blue Neon */
+    
+    /* 2. Text Shadow untuk Outline dan Bayangan 3D */
+    text-shadow: 
+        /* Lapisan 1: Outline Putih Tipis (Inner Highlight) */
+        -1px -1px 0 #FFFFFF, 
+        1px -1px 0 #FFFFFF, 
+        -1px 1px 0 #FFFFFF, 
+        1px 1px 0 #FFFFFF, 
+        
+        /* Lapisan 2: Outline Hitam Tebal (KONTRAST UTAMA) */
+        -4px -4px 0 #000000, 
+        4px -4px 0 #000000, 
+        -4px 4px 0 #000000, 
+        4px 4px 0 #000000,
+        
+        /* Lapisan 3: Bayangan 3D/Drop Shadow PINK NEON */
+        8px 8px 0 #FF4081, /* Pink Neon */
+        
+        /* Lapisan 4: Drop Shadow Lembut */
+        10px 10px 0 rgba(0, 0, 0, 0.2); 
+    
+    /* Memastikan konten di tengah dan tidak ada konflik */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none; 
+}
+
+/* Style Khusus untuk Ikon di dalam Judul */
+.menu-title i {
+    font-size: clamp(1.5rem, 4vw, 3rem); 
+    margin: 0 10px; 
+    
+    /* Warna Ikon mengikuti warna Fill (Biru Neon) */
+    color: #00BCD4; 
+    
+    /* Outline Hitam/Pink agar konsisten */
+    text-shadow: 
+        -2px -2px 0 #000000, 
+        2px 2px 0 #FF4081;
+}
+
+.menu-subtitle {
+    /* Style Dasar */
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Ukuran responsif */
+    font-weight: 600;
+    color: #37474F; /* Dark Slate Gray */
+    margin-bottom: 25px; /* Memberi jarak yang cukup ke tombol level */
+    
+    /* Efek halus */
+    text-shadow: 
+        1px 1px 0 rgba(255, 255, 255, 0.8), /* Bayangan putih halus */
+        1px 1px 2px rgba(0, 0, 0, 0.1); 
+}
+
+/* Kontainer Opsi Target */
+.target-options {
+    /* MENGGUNAKAN GRID 4 KOLOM */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #f0f8ff; /* Latar belakang terang untuk kontras */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+
+    /* Media Query: 3 kolom untuk tablet */
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    /* Media Query: 2 kolom untuk ponsel */
+    @media (max-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Gaya Tombol Level */
+.target-btn {
+    /* Tinggi tetap untuk konsistensi */
+    height: 70px; 
+    /* Memastikan teks di tengah tombol */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 12px;
+    /* Catatan: Gaya visual (gradient, shadow, hover) yang sudah Anda miliki tetap berlaku */
+}
+
+
+/* Warna Pastel Pelangi untuk Tombol Level */
+.target-btn[data-target="9"] {
+    background: linear-gradient(135deg, #FFB6C1, #FF69B4); /* Pink Pastel */
+    border-color: #FF69B4;
+}
+
+.target-btn[data-target="10"] {
+    background: linear-gradient(135deg, #FFD700, #FFA500); /* Orange Pastel */
+    border-color: #FFA500;
+}
+
+.target-btn[data-target="11"] {
+    background: linear-gradient(135deg, #98FB98, #32CD32); /* Hijau Pastel */
+    border-color: #32CD32;
+}
+
+.target-btn[data-target="12"] {
+    background: linear-gradient(135deg, #87CEEB, #1E90FF); /* Biru Pastel */
+    border-color: #1E90FF;
+}
+
+.target-btn[data-target="13"] {
+    background: linear-gradient(135deg, #DDA0DD, #BA55D3); /* Ungu Pastel */
+    border-color: #BA55D3;
+}
+
+.target-btn[data-target="14"] {
+    background: linear-gradient(135deg, #FFA07A, #FF6347); /* Merah Pastel */
+    border-color: #FF6347;
+}
+
+.target-btn[data-target="15"] {
+    background: linear-gradient(135deg, #F0E68C, #DAA520); /* Kuning Pastel */
+    border-color: #DAA520;
+}
+
+.target-btn[data-target="20"] {
+    background: linear-gradient(135deg, #E0FFFF, #40E0D0); /* Cyan Pastel */
+    border-color: #40E0D0;
+}
+
+/* --- Tambahan Warna Pastel untuk Level Kesulitan Baru --- */
+
+.target-btn[data-target="30"] {
+    background: linear-gradient(135deg, #FAD7A1, #E59866); /* Peach/Coklat Muda */
+    border-color: #E59866;
+}
+
+.target-btn[data-target="40"] {
+    background: linear-gradient(135deg, #A2F59D, #58D683); /* Hijau Mint */
+    border-color: #58D683;
+}
+
+.target-btn[data-target="50"] {
+    background: linear-gradient(135deg, #A9CCE3, #5499C7); /* Biru Langit */
+    border-color: #5499C7;
+}
+
+.target-btn[data-target="75"] {
+    background: linear-gradient(135deg, #D7BDE2, #AF7AC5); /* Lavender */
+    border-color: #AF7AC5;
+}
+
+.target-btn[data-target="100"] {
+    background: linear-gradient(135deg, #F5B7B1, #E74C3C); /* Merah Bata */
+    border-color: #E74C3C;
+}
+
+.target-btn[data-target="200"] {
+    background: linear-gradient(135deg, #E6E6E6, #D0D3D4); /* Abu-abu Dingin */
+    border-color: #D0D3D4;
+}
+
+.target-btn[data-target="500"] {
+    background: linear-gradient(135deg, #FFE0B2, #FFCC80); /* Kuning Hangat */
+    border-color: #FFCC80;
+}
+
+.target-btn[data-target="1000"] {
+    background: linear-gradient(135deg, #B2EBF2, #4DD0E1); /* Cyan Terang */
+    border-color: #4DD0E1;
+}
+
+
+
+.target-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+.target-btn.active {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Header - Pastel Blue Dream */
+header {
+    text-align: center;
+    padding: 20px;
+    background: 
+        linear-gradient(135deg, #a8d8ea 0%, #caf0f8 50%, #90e0ef 100%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.8) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(178, 223, 238, 0.6) 0%, transparent 50%);
+    border-radius: 20px;
+    box-shadow: 
+        0 10px 30px rgba(168, 216, 234, 0.4),
+        inset 0 0 0 3px rgba(255,255,255,0.8);
+    border: 3px solid #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%23ffffff" opacity="0.3"/><circle cx="40" cy="80" r="1" fill="%23ffffff" opacity="0.3"/><circle cx="60" cy="60" r="1.5" fill="%23ffffff" opacity="0.3"/></svg>');
+    z-index: 0;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #0077b6;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+        2px 2px 4px rgba(255,255,255,0.8),
+        0 0 10px rgba(0, 119, 182, 0.2);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    color: #023e8a;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.9);
+    padding: 6px 15px;
+    border-radius: 50px;
+    display: inline-block;
+    border: 2px solid #90e0ef;
+    box-shadow: 0 4px 15px rgba(144, 224, 239, 0.3);
+    margin-bottom: 10px;
+}
+
+/* Game Area */
+.game-area {
+    display: flex;
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Player 1 Panel - Background Putih dengan Aksen Merah */
+.player-panel.player1 {
+    flex: 1;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFEBEE 100%);
+    border-radius: 18px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(244, 67, 54, 0.15);
+    border: 3px solid #FFCDD2;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    min-height: 0;
+    position: relative;
+}
+
+.player-panel.player1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #FF5252, #FF8A80);
+    border-radius: 18px 18px 0 0;
+}
+
+/* Player 2 Panel - Background Putih dengan Aksen Biru */
+.player-panel.player2 {
+    flex: 1;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E3F2FD 100%);
+    border-radius: 18px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.15);
+    border: 3px solid #BBDEFB;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    min-height: 0;
+    position: relative;
+}
+
+.player-panel.player2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #2196F3, #64B5F6);
+    border-radius: 18px 18px 0 0;
+}
+
+.player-title {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    border: 2px solid;
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+.player1 .player-title {
+    border-color: #FF5252;
+    color: #D32F2F;
+    background: linear-gradient(135deg, #FFEBEE, #FFFFFF);
+}
+
+.player2 .player-title {
+    border-color: #2196F3;
+    color: #1565C0;
+    background: linear-gradient(135deg, #E3F2FD, #FFFFFF);
+}
+
+.player-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    flex: 1;
+    min-height: 0;
+    padding: 6px;
+}
+
+.tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: clamp(1rem, 2.8vw, 1.5rem);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 0 0 2px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    min-height: 0;
+    aspect-ratio: 1;
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.tile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);
+    z-index: 1;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.tile:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.25),
+        0 0 0 2px rgba(255, 255, 255, 1),
+        0 0 15px rgba(255, 255, 255, 0.6);
+    z-index: 5;
+}
+
+.tile:hover::before {
+    background: linear-gradient(135deg, rgba(255,255,255,0.6), transparent);
+}
+
+/* SELECTED EFFECT */
+.tile.selected {
+    transform: scale(1.15) rotate(-2deg);
+    box-shadow: 
+        0 0 25px rgba(255, 215, 0, 0.8),
+        0 0 0 3px #FFD700,
+        0 0 20px rgba(255, 215, 0, 0.6),
+        inset 0 0 15px rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    border-color: #FFD700;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        box-shadow: 
+            0 0 25px rgba(255, 215, 0, 0.8),
+            0 0 0 3px #FFD700,
+            0 0 20px rgba(255, 215, 0, 0.6),
+            inset 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+    50% { 
+        box-shadow: 
+            0 0 35px rgba(255, 215, 0, 1),
+            0 0 0 4px #FFD700,
+            0 0 25px rgba(255, 215, 0, 0.8),
+            inset 0 0 20px rgba(255, 255, 255, 1);
+    }
+}
+
+.tile.matched {
+    animation: matchedAnimation 0.8s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes matchedAnimation {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+    100% { transform: scale(0); opacity: 0; visibility: hidden; }
+}
+
+/* Center Panel - Background Putih dengan Aksen Kuning */
+.center-panel {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDE7 100%);
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 8px 32px rgba(255, 193, 7, 0.15);
+    border: 3px solid #FFF9C4;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.center-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #FFD700, #FFEE58);
+    border-radius: 18px 18px 0 0;
+}
+
+/* Timer - Glass Morphism (FIXED SIZE) */
+.timer-container {
+    text-align: center;
+    margin: 6px 0;
+    padding: 12px 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 6px 20px rgba(31, 38, 135, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.timer-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            transparent 50%, 
+            rgba(255, 255, 255, 0.1) 100%);
+    z-index: 1;
+}
+
+.timer-title {
+    color: #2C3E50;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.timer {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    font-weight: bold;
+    color: #2C3E50;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+        1px 1px 3px rgba(255, 255, 255, 0.8),
+        0 0 6px rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Score - Floating Cards */
+.score-container {
+    text-align: center;
+    margin: 8px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    border: 2px solid;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.1),
+        0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.score-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 25px rgba(0, 0, 0, 0.15),
+        0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Pemain 1 Score */
+.center-panel .score-container:nth-child(2) {
+    border-color: #FF6B6B;
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+}
+
+.center-panel .score-container:nth-child(2) .score-title {
+    color: #FF6B6B;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+.center-panel .score-container:nth-child(2) .score {
+    color: #FF6B6B;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-weight: bold;
+}
+
+/* Pemain 2 Score */
+.center-panel .score-container:nth-child(3) {
+    border-color: #4ECDC4;
+    background: linear-gradient(135deg, #ffffff 0%, #f0fffe 100%);
+}
+
+.center-panel .score-container:nth-child(3) .score-title {
+    color: #4ECDC4;
+    background: rgba(78, 205, 196, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+.center-panel .score-container:nth-child(3) .score {
+    color: #4ECDC4;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-weight: bold;
+}
+
+/* Animation untuk score update */
+@keyframes scoreUpdate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.score-update {
+    animation: scoreUpdate 0.5s ease;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 12px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #E0E0E0;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    gap: 10px;
+}
+
+footer a, .menu-btn {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+footer a:hover, .menu-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Confetti Effect */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: #f00;
+    opacity: 0;
+    z-index: 1000;
+    animation: confetti-fall 3s linear forwards;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ============================================== */
+/* === STYLING POPUP PEMENANG KEREN DAN MERIAH === */
+/* ============================================== */
+
+/* 1. Kontainer Pop-up (Background dan Transisi) */
+.winner-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Lebih gelap untuk efek dramatis */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0; /* Mulai tersembunyi */
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    backdrop-filter: blur(5px); /* Efek blur pada background */
+}
+
+.winner-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 2. Isi Pop-up (Kotak Utama) */
+.winner-content {
+    background: linear-gradient(145deg, #FFD700, #FFA500); /* Gradient Emas/Oranye */
+    color: #4B0082; /* Teks ungu tua kontras */
+    padding: 40px;
+    border-radius: 25px; /* Lebih bulat */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(255, 165, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); /* Bayangan emas */
+    transform: scale(0.8); /* Animasi muncul */
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
+    border: 5px solid #FFFFFF;
+}
+
+.winner-popup.active .winner-content {
+    transform: scale(1);
+}
+
+/* 3. Judul Kemenangan (Paling Mencolok) */
+.winner-title {
+    font-size: 2.5em;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    
+    /* Efek Neon Glow Meriah */
+    color: #FFFFFF;
+    text-shadow: 
+        0 0 5px #FF69B4,  /* Pink */
+        0 0 10px #FFD700, /* Emas */
+        0 0 15px #FF1493, /* Deep Pink */
+        0 0 20px #FFD700;
+}
+
+/* 4. Pesan Pemenang (NEON GLOW) */
+.winner-message {
+    font-size: 3.5em; /* Tetap besar */
+    font-weight: 900; /* Tebal sekali */
+    text-transform: uppercase; /* Huruf Kapital */
+    margin-bottom: 25px;
+    
+    /* Efek Neon Glow disamakan dengan winner-title */
+    color: #FFFFFF; /* Warna dasar putih */
+    text-shadow: 
+        0 0 5px #FF69B4,  /* Pink */
+        0 0 10px #FFD700, /* Emas */
+        0 0 15px #FF1493, /* Deep Pink */
+        0 0 20px #FFD700;
+}
+
+/* 5. Bagian Skor - KODE YANG SUDAH DI-REVISI (KARTU & VS) */
+.winner-scores {
+    display: flex;
+    justify-content: center; /* Posisikan ke tengah */
+    align-items: center;
+    gap: 40px; /* Jarak antar skor diperlebar */
+    margin: 30px auto;
+    padding: 10px 0;
+    border: none;
+    position: relative;
+}
+
+/* Efek pemisah tengah "VS" yang mencolok */
+.winner-scores::after {
+    content: 'VS'; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    font-weight: bold;
+    color: #FF69B4; /* Pink yang cerah */
+    text-shadow: 0 0 5px #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.1); 
+    padding: 5px 10px;
+    border-radius: 10px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Styling untuk setiap kotak skor (Player 1 & Player 2) */
+.player-score {
+    /* Container Score berbentuk kartu */
+    background: #FFFFFF; 
+    padding: 20px 30px;
+    border-radius: 15px;
+    min-width: 150px;
+    
+    /* Bayangan 3D yang kuat + sedikit Glow Emas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 15px #FFD700; 
+    border: 3px solid #FFA500; 
+    color: #4B0082;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.3s ease;
+    z-index: 1; 
+}
+
+.player-score:hover {
+    transform: translateY(-5px) scale(1.05); 
+}
+
+/* Styling nilai skor (angka) - Lebih besar dan meriah */
+.player-score-value {
+    font-size: 3.5em; 
+    font-weight: 900;
+    
+    /* Gradient warna cerah (Neon Pink ke Emas) */
+    background: linear-gradient(45deg, #FF69B4, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    line-height: 1; 
+}
+
+/* 6. Tombol Aksi */
+.popup-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Base style untuk semua tombol di pop-up */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Tombol Primary (Main Lagi) */
+.primary-btn {
+    background-color: #32CD32; /* Lime Green/Hijau Cerah */
+    color: white;
+    border: 2px solid #228B22;
+}
+
+.primary-btn:hover {
+    background-color: #4CAF50;
+}
+
+/* Tombol Secondary (Menu Utama) */
+.secondary-btn {
+    background-color: #6495ED; /* Cornflower Blue/Biru Muda */
+    color: white;
+    border: 2px solid #4169E1;
+}
+
+.secondary-btn:hover {
+    background-color: #7B68EE; /* MediumSlateBlue */
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+/* Tambahkan bintang-bintang pada kontainer pop-up */
+.winner-popup::before,
+.winner-popup::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* Di bawah pop-up content, di atas background */
+    pointer-events: none;
+    background: transparent;
+}
+
+/* Layer Bintang 1: Cepat dan Kecil */
+.winner-popup::before {
+    background: radial-gradient(circle, #ffd700 1px, transparent 1px) 0 0, 
+                radial-gradient(circle, #ff69b4 1px, transparent 1px) 50px 50px;
+    background-size: 100px 100px;
+    
+    /* Animasi Bintang */
+    animation: 
+        star-fall 15s linear infinite, 
+        star-twinkle 2s infinite alternate;
+}
+
+/* Layer Bintang 2: Lambat dan Besar */
+.winner-popup::after {
+    background: radial-gradient(circle, #ffffff 1.5px, transparent 1.5px) 0 0, 
+                radial-gradient(circle, #ffffff 1.5px, transparent 1.5px) 50px 50px;
+    background-size: 150px 150px;
+    
+    /* Animasi Bintang */
+    animation: 
+        star-fall 25s linear infinite reverse, /* Bergerak berlawanan arah dan lebih lambat */
+        star-twinkle 3s infinite alternate;
+    
+    /* Tambahkan sedikit delay agar tidak sama dengan layer 1 */
+    animation-delay: 1s, 0.5s; 
+}
+
+/* Pastikan bintang hanya terlihat saat pop-up aktif */
+.winner-popup:not(.active)::before,
+.winner-popup:not(.active)::after {
+    display: none;
+}
+
+/* ============================================== */
+/* === AKHIR STYLING POPUP === */
+/* ============================================== */
+
+
+/* Sound Controls */
+.sound-controls {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+}
+
+.sound-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Color schemes for tiles */
+.tile[data-value="1"] { 
+    background: linear-gradient(145deg, #FF6B6B, #FF5252); 
+    border-color: rgba(255, 107, 107, 0.8);
+}
+.tile[data-value="2"] { 
+    background: linear-gradient(145deg, #4ECDC4, #26A69A); 
+    border-color: rgba(78, 205, 196, 0.8);
+}
+.tile[data-value="3"] { 
+    background: linear-gradient(145deg, #FFD166, #FFCA28); 
+    border-color: rgba(255, 209, 102, 0.8);
+}
+.tile[data-value="4"] { 
+    background: linear-gradient(145deg, #6A0572, #8E24AA); 
+    border-color: rgba(106, 5, 114, 0.8);
+}
+.tile[data-value="5"] { 
+    background: linear-gradient(145deg, #118AB2, #0277BD); 
+    border-color: rgba(17, 138, 178, 0.8);
+}
+.tile[data-value="6"] { 
+    background: linear-gradient(145deg, #06D6A0, #00C853); 
+    border-color: rgba(6, 214, 160, 0.8);
+}
+.tile[data-value="7"] { 
+    background: linear-gradient(145deg, #EF476F, #D81B60); 
+    border-color: rgba(239, 71, 111, 0.8);
+}
+.tile[data-value="8"] { 
+    background: linear-gradient(145deg, #7209B7, #7B1FA2); 
+    border-color: rgba(114, 9, 183, 0.8);
+}
+.tile[data-value="9"] { 
+    background: linear-gradient(145deg, #F48C06, #FF6D00); 
+    border-color: rgba(244, 140, 6, 0.8);
+}
+.tile[data-value="10"] { 
+    background: linear-gradient(145deg, #9C27B0, #7B1FA2); 
+    border-color: rgba(156, 39, 176, 0.8);
+}
+.tile[data-value="11"] { 
+    background: linear-gradient(145deg, #3F51B5, #303F9F); 
+    border-color: rgba(63, 81, 181, 0.8);
+}
+.tile[data-value="12"] { 
+    background: linear-gradient(145deg, #009688, #00796B); 
+    border-color: rgba(0, 150, 136, 0.8);
+}
+.tile[data-value="13"] { 
+    background: linear-gradient(145deg, #795548, #5D4037); 
+    border-color: rgba(121, 85, 72, 0.8);
+}
+.tile[data-value="14"] { 
+    background: linear-gradient(145deg, #607D8B, #455A64); 
+    border-color: rgba(96, 125, 139, 0.8);
+}
+.tile[data-value="15"] { 
+    background: linear-gradient(145deg, #FF5722, #D84315); 
+    border-color: rgba(255, 87, 34, 0.8);
+}
+.tile[data-value="16"] { 
+    background: linear-gradient(145deg, #673AB7, #512DA8); 
+    border-color: rgba(103, 58, 183, 0.8);
+}
+.tile[data-value="17"] { 
+    background: linear-gradient(145deg, #00BCD4, #0097A7); 
+    border-color: rgba(0, 188, 212, 0.8);
+}
+.tile[data-value="18"] { 
+    background: linear-gradient(145deg, #8BC34A, #689F38); 
+    border-color: rgba(139, 195, 74, 0.8);
+}
+.tile[data-value="19"] { 
+    background: linear-gradient(145deg, #FF9800, #F57C00); 
+    border-color: rgba(255, 152, 0, 0.8);
+}
+.tile[data-value="20"] { 
+    background: linear-gradient(145deg, #E91E63, #C2185B); 
+    border-color: rgba(233, 30, 99, 0.8);
+}
+
+/* --- Tambahan untuk Logo Bimbel Brilian pada Grid Pemain --- */
+
+#player1-grid, #player2-grid {
+    /* Atur posisi dan ukuran agar pseudo-element bisa menutupi seluruh area grid */
+    position: relative; 
+    overflow: hidden; /* Penting untuk membatasi pseudo-element */
+    /* Pastikan warna background default tetap ada */
+    background-color: #f7f7f7; /* Contoh warna default, sesuaikan jika berbeda */
+
+    /* Tambahan styling lain (grid-template-columns, dll.) tetap dipertahankan */
+}
+
+/* Menggunakan pseudo-element untuk menumpuk gambar logo dengan opacity rendah */
+#player1-grid::before, #player2-grid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Properti Logo */
+    background-image: url('logo_bimbelbrilian.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%; /* Atur ukuran logo */
+    
+    /* Transparansi 90% (Visibilitas 10%) */
+    opacity: 0.1; 
+    z-index: 0;
+    pointer-events: none; /* Agar klik pada ubin tidak terhalang */
+}
+
+/* Pastikan ubin berada di atas lapisan logo */
+.tile {
+    position: relative;
+    z-index: 1; /* Harus lebih tinggi dari z-index: 0 pada ::before */
+    /* ... styling tile lainnya ... */
+}
+
+/* ============================================== */
+/* === STYLING BARU: 20 VARIASI WARNA KARTU ANGKA === */
+/* ============================================== */
+
+/* 1. Varian Hijau Cerah */
+.card-variant-1 .card-back {
+    background: linear-gradient(135deg, #A8E6CF, #DFFFDF); 
+    color: #00796B; border: 3px solid #66BB6A;
+    box-shadow: 0 6px 0 #66BB6A, 0 0 15px #C5E1A5;
+}
+.card-variant-1:hover .card-back { box-shadow: 0 4px 0 #66BB6A, 0 0 20px #81C784; }
+
+/* 2. Varian Biru Laut */
+.card-variant-2 .card-back {
+    background: linear-gradient(135deg, #BBDEFB, #E3F2FD); 
+    color: #1565C0; border: 3px solid #42A5F5;
+    box-shadow: 0 6px 0 #42A5F5, 0 0 15px #90CAF9;
+}
+.card-variant-2:hover .card-back { box-shadow: 0 4px 0 #42A5F5, 0 0 20px #64B5F6; }
+
+/* 3. Varian Ungu Magenta */
+.card-variant-3 .card-back {
+    background: linear-gradient(135deg, #E1BEE7, #F3E5F5); 
+    color: #6A1B9A; border: 3px solid #AB47BC;
+    box-shadow: 0 6px 0 #AB47BC, 0 0 15px #CE93D8;
+}
+.card-variant-3:hover .card-back { box-shadow: 0 4px 0 #AB47BC, 0 0 20px #BA68C8; }
+
+/* 4. Varian Oranye Hangat */
+.card-variant-4 .card-back {
+    background: linear-gradient(135deg, #FFCC80, #FFE0B2); 
+    color: #E65100; border: 3px solid #FFA726;
+    box-shadow: 0 6px 0 #FFA726, 0 0 15px #FFB74D;
+}
+.card-variant-4:hover .card-back { box-shadow: 0 4px 0 #FFA726, 0 0 20px #FFB74D; }
+
+/* 5. Varian Merah Muda Cerah */
+.card-variant-5 .card-back {
+    background: linear-gradient(135deg, #F8BBD0, #FFEBEE); 
+    color: #C2185B; border: 3px solid #F06292;
+    box-shadow: 0 6px 0 #F06292, 0 0 15px #F48FB1;
+}
+.card-variant-5:hover .card-back { box-shadow: 0 4px 0 #F06292, 0 0 20px #F48FB1; }
+
+/* 6. Varian Toska (Teal) */
+.card-variant-6 .card-back {
+    background: linear-gradient(135deg, #B2EBF2, #E0F7FA); 
+    color: #00838F; border: 3px solid #26C6DA;
+    box-shadow: 0 6px 0 #26C6DA, 0 0 15px #80DEEA;
+}
+.card-variant-6:hover .card-back { box-shadow: 0 4px 0 #26C6DA, 0 0 20px #4DD0E1; }
+
+/* 7. Varian Kuning Lemon */
+.card-variant-7 .card-back {
+    background: linear-gradient(135deg, #FFF9C4, #FFFDE7); 
+    color: #FBC02D; border: 3px solid #FFEE58;
+    box-shadow: 0 6px 0 #FFEE58, 0 0 15px #FFF59D;
+}
+.card-variant-7:hover .card-back { box-shadow: 0 4px 0 #FFEE58, 0 0 20px #FFEA00; }
+
+/* 8. Varian Abu-abu Dingin */
+.card-variant-8 .card-back {
+    background: linear-gradient(135deg, #CFD8DC, #ECEFF1); 
+    color: #455A64; border: 3px solid #90A4AE;
+    box-shadow: 0 6px 0 #90A4AE, 0 0 15px #B0BEC5;
+}
+.card-variant-8:hover .card-back { box-shadow: 0 4px 0 #90A4AE, 0 0 20px #AAB5BA; }
+
+/* 9. Varian Hijau Mint */
+.card-variant-9 .card-back {
+    background: linear-gradient(135deg, #B9FBC0, #D0FFC0); 
+    color: #1B5E20; border: 3px solid #4CAF50;
+    box-shadow: 0 6px 0 #4CAF50, 0 0 15px #A5D6A7;
+}
+.card-variant-9:hover .card-back { box-shadow: 0 4px 0 #4CAF50, 0 0 20px #81C784; }
+
+/* 10. Varian Indigo Pastel */
+.card-variant-10 .card-back {
+    background: linear-gradient(135deg, #C5CAE9, #E8EAF6); 
+    color: #303F9F; border: 3px solid #7986CB;
+    box-shadow: 0 6px 0 #7986CB, 0 0 15px #9FA8DA;
+}
+.card-variant-10:hover .card-back { box-shadow: 0 4px 0 #7986CB, 0 0 20px #9FA8DA; }
+
+/* 11. Varian Emas Cerah */
+.card-variant-11 .card-back {
+    background: linear-gradient(135deg, #FFEB3B, #FFF59D); 
+    color: #FF8F00; border: 3px solid #FFC107;
+    box-shadow: 0 6px 0 #FFC107, 0 0 15px #FFE082;
+}
+.card-variant-11:hover .card-back { box-shadow: 0 4px 0 #FFC107, 0 0 20px #FFCA28; }
+
+/* 12. Varian Violet Listrik */
+.card-variant-12 .card-back {
+    background: linear-gradient(135deg, #E6A9FF, #F4D3FF); 
+    color: #7B1FA2; border: 3px solid #D500F9;
+    box-shadow: 0 6px 0 #D500F9, 0 0 15px #EA80FC;
+}
+.card-variant-12:hover .card-back { box-shadow: 0 4px 0 #D500F9, 0 0 20px #C700FF; }
+
+/* 13. Varian Hijau Zaitun */
+.card-variant-13 .card-back {
+    background: linear-gradient(135deg, #DCE775, #F0F4C3); 
+    color: #689F38; border: 3px solid #AEEA00;
+    box-shadow: 0 6px 0 #AEEA00, 0 0 15px #C6FF00;
+}
+.card-variant-13:hover .card-back { box-shadow: 0 4px 0 #AEEA00, 0 0 20px #B2FF59; }
+
+/* 14. Varian Cokelat Hangat */
+.card-variant-14 .card-back {
+    background: linear-gradient(135deg, #D7CCC8, #EDE7F6); 
+    color: #6D4C41; border: 3px solid #A1887F;
+    box-shadow: 0 6px 0 #A1887F, 0 0 15px #BCAAA4;
+}
+.card-variant-14:hover .card-back { box-shadow: 0 4px 0 #A1887F, 0 0 20px #A98C7F; }
+
+/* 15. Varian Cyan Pucat */
+.card-variant-15 .card-back {
+    background: linear-gradient(135deg, #80DEEA, #E0F7FA); 
+    color: #0097A7; border: 3px solid #4DD0E1;
+    box-shadow: 0 6px 0 #4DD0E1, 0 0 15px #84FFFF;
+}
+.card-variant-15:hover .card-back { box-shadow: 0 4px 0 #4DD0E1, 0 0 20px #4DD0E1; }
+
+/* 16. Varian Merah Bata */
+.card-variant-16 .card-back {
+    background: linear-gradient(135deg, #FFCDD2, #FFEBEE); 
+    color: #D32F2F; border: 3px solid #EF5350;
+    box-shadow: 0 6px 0 #EF5350, 0 0 15px #FFCDD2;
+}
+.card-variant-16:hover .card-back { box-shadow: 0 4px 0 #EF5350, 0 0 20px #FF8A80; }
+
+/* 17. Varian Hijau Limau */
+.card-variant-17 .card-back {
+    background: linear-gradient(135deg, #F0F4C3, #F9FBE7); 
+    color: #AFB42B; border: 3px solid #C0CA33;
+    box-shadow: 0 6px 0 #C0CA33, 0 0 15px #E6EE9C;
+}
+.card-variant-17:hover .card-back { box-shadow: 0 4px 0 #C0CA33, 0 0 20px #DCE775; }
+
+/* 18. Varian Biru Navy Tua */
+.card-variant-18 .card-back {
+    background: linear-gradient(135deg, #BBDEFB, #E3F2FD); 
+    color: #1A237E; border: 3px solid #5C6BC0;
+    box-shadow: 0 6px 0 #5C6BC0, 0 0 15px #9FA8DA;
+}
+.card-variant-18:hover .card-back { box-shadow: 0 4px 0 #5C6BC0, 0 0 20px #90CAF9; }
+
+/* 19. Varian Peach Lembut */
+.card-variant-19 .card-back {
+    background: linear-gradient(135deg, #FFCCBC, #FFEBEE); 
+    color: #FF7043; border: 3px solid #FF8A65;
+    box-shadow: 0 6px 0 #FF8A65, 0 0 15px #FFAB91;
+}
+.card-variant-19:hover .card-back { box-shadow: 0 4px 0 #FF8A65, 0 0 20px #FF9E80; }
+
+/* 20. Varian Biru Langit */
+.card-variant-20 .card-back {
+    background: linear-gradient(135deg, #B3E5FC, #E1F5FE); 
+    color: #0288D1; border: 3px solid #4FC3F7;
+    box-shadow: 0 6px 0 #4FC3F7, 0 0 15px #81D4FA;
+}
+.card-variant-20:hover .card-back { box-shadow: 0 4px 0 #4FC3F7, 0 0 20px #4FC3F7; }
+
+/* Untuk menyembunyikan kartu yang cocok tanpa mengubah tata letak */
+.tile.is-hidden {
+    visibility: hidden;
+    pointer-events: none; /* Mencegah kartu yang tersembunyi dapat diklik */
+    /* opacity: 0; */ /* Boleh ditambahkan jika Anda ingin transisi saat kartu menghilang */
+}

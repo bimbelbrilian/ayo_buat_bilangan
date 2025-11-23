@@ -1,0 +1,162 @@
+/* ========== MOBILE SPECIFIC STYLES ========== */
+
+/* Force landscape mode for mobile */
+@media (max-width: 768px) {
+    .orientation-warning {
+        display: flex;
+    }
+    
+    .container, .main-menu, .winner-popup {
+        display: none;
+    }
+    
+    /* Show container only in landscape mode */
+    @media (orientation: landscape) {
+        .orientation-warning {
+            display: none;
+        }
+        
+        .container, .main-menu:not(.hidden), .winner-popup.active {
+            display: flex;
+        }
+    }
+}
+
+/* Mobile Landscape */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+        justify-content: flex-start;
+        min-height: auto;
+        height: 100vh;
+    }
+    
+    .container {
+        height: 98vh;
+        gap: 8px;
+    }
+    
+    header {
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        margin-bottom: 5px;
+    }
+    
+    .game-area {
+        gap: 8px;
+        flex-direction: row;
+    }
+    
+    .player-panel {
+        padding: 10px;
+        border-radius: 15px;
+    }
+    
+    .player-title {
+        font-size: 0.9rem;
+        padding: 6px;
+        margin-bottom: 8px;
+    }
+    
+    .player-grid {
+        gap: 5px;
+        grid-template-columns: repeat(6, 1fr); 
+        grid-template-rows: repeat(5, 1fr);
+        padding: 4px;
+    }
+    
+    .tile {
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    
+    .center-panel {
+        width: 140px;
+        padding: 10px;
+        border-radius: 15px;
+    }
+    
+    .timer-container {
+        min-height: 60px;
+        padding: 8px;
+        margin: 4px 0;
+    }
+    
+    .timer {
+        font-size: 1.2rem;
+        padding: 4px 8px;
+    }
+    
+    .score-container {
+        min-height: 60px;
+        padding: 10px;
+        margin: 5px 0;
+    }
+    
+    .score {
+        font-size: 1.5rem;
+    }
+    
+    footer {
+        padding: 8px;
+        border-radius: 10px;
+    }
+}
+
+/* Mobile Portrait - Hide game content */
+@media (max-width: 768px) and (orientation: portrait) {
+    .container, .main-menu, .winner-popup {
+        display: none;
+    }
+    
+    .orientation-warning {
+        display: flex;
+    }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 480px) and (orientation: landscape) {
+    .container {
+        height: 99vh;
+    }
+    
+    header {
+        padding: 15px;
+    }
+    
+    .player-panel {
+        padding: 12px;
+    }
+    
+    .center-panel {
+        padding: 10px;
+    }
+    
+    .player-grid {
+        gap: 5px;
+        grid-template-columns: repeat(6, 1fr); 
+        grid-template-rows: repeat(5, 1fr);
+        padding: 4px;
+    }
+    
+    .tile {
+        font-size: clamp(0.8rem, 2vw, 1.1rem);
+    }
+}
+
+/* Untuk menyembunyikan kartu yang cocok tanpa mengubah tata letak */
+.tile.is-hidden {
+    visibility: hidden;
+    pointer-events: none; /* Mencegah kartu yang tersembunyi dapat diklik */
+    /* opacity: 0; */ /* Boleh ditambahkan jika Anda ingin transisi saat kartu menghilang */
+}
