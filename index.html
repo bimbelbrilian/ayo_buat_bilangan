@@ -34,60 +34,60 @@
             gap: 15px;
         }
         
-        /* Header Alternatif 3 - Pastel Blue Dream */
-header {
-    text-align: center;
-    padding: 25px;
-    background: 
-        linear-gradient(135deg, #a8d8ea 0%, #caf0f8 50%, #90e0ef 100%),
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.8) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(178, 223, 238, 0.6) 0%, transparent 50%);
-    border-radius: 25px;
-    box-shadow: 
-        0 10px 30px rgba(168, 216, 234, 0.4),
-        inset 0 0 0 3px rgba(255,255,255,0.8);
-    border: 3px solid #ffffff;
-    position: relative;
-    overflow: hidden;
-}
+        /* Header - Pastel Blue Dream */
+        header {
+            text-align: center;
+            padding: 25px;
+            background: 
+                linear-gradient(135deg, #a8d8ea 0%, #caf0f8 50%, #90e0ef 100%),
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.8) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(178, 223, 238, 0.6) 0%, transparent 50%);
+            border-radius: 25px;
+            box-shadow: 
+                0 10px 30px rgba(168, 216, 234, 0.4),
+                inset 0 0 0 3px rgba(255,255,255,0.8);
+            border: 3px solid #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
 
-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%23ffffff" opacity="0.3"/><circle cx="40" cy="80" r="1" fill="%23ffffff" opacity="0.3"/><circle cx="60" cy="60" r="1.5" fill="%23ffffff" opacity="0.3"/></svg>');
-    z-index: 0;
-}
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%23ffffff" opacity="0.3"/><circle cx="40" cy="80" r="1" fill="%23ffffff" opacity="0.3"/><circle cx="60" cy="60" r="1.5" fill="%23ffffff" opacity="0.3"/></svg>');
+            z-index: 0;
+        }
 
-h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    color: #0077b6;
-    letter-spacing: 3px;
-    position: relative;
-    z-index: 2;
-    text-shadow: 
-        2px 2px 4px rgba(255,255,255,0.8),
-        0 0 10px rgba(0, 119, 182, 0.2);
-    margin-bottom: 10px;
-}
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #0077b6;
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 
+                2px 2px 4px rgba(255,255,255,0.8),
+                0 0 10px rgba(0, 119, 182, 0.2);
+            margin-bottom: 10px;
+        }
 
-.subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: #023e8a;
-    font-weight: bold;
-    position: relative;
-    z-index: 2;
-    background: rgba(255,255,255,0.9);
-    padding: 8px 20px;
-    border-radius: 50px;
-    display: inline-block;
-    border: 2px solid #90e0ef;
-    box-shadow: 0 4px 15px rgba(144, 224, 239, 0.3);
-}
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: #023e8a;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 2px solid #90e0ef;
+            box-shadow: 0 4px 15px rgba(144, 224, 239, 0.3);
+        }
         
         /* Game Area */
         .game-area {
@@ -224,7 +224,7 @@ h1 {
             transition: all 0.3s ease;
         }
         
-        /* HOVER EFFECT - DIKOREKSI */
+        /* HOVER EFFECT */
         .tile:hover {
             transform: scale(1.15) rotate(2deg);
             box-shadow: 
@@ -238,7 +238,7 @@ h1 {
             background: linear-gradient(135deg, rgba(255,255,255,0.6), transparent);
         }
         
-        /* SELECTED EFFECT - DIKOREKSI (LEBIH BESAR) */
+        /* SELECTED EFFECT */
         .tile.selected {
             transform: scale(1.25) rotate(-2deg);
             box-shadow: 
@@ -307,263 +307,145 @@ h1 {
             border-radius: 20px 20px 0 0;
         }
         
-        /* Timer - Glass Morphism */
-.timer-container {
-    text-align: center;
-    margin: 12px 0;
-    padding: 30px 25px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 25px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 
-        0 8px 32px rgba(31, 38, 135, 0.2),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px);
-    position: relative;
-    overflow: hidden;
-}
-
-.timer-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.1) 0%, 
-            transparent 50%, 
-            rgba(255, 255, 255, 0.1) 100%);
-    z-index: 1;
-}
-
-.timer-title {
-    color: #2C3E50;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-    position: relative;
-    z-index: 2;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-}
-
-.timer {
-    font-size: clamp(2.8rem, 6vw, 4rem);
-    font-weight: bold;
-    color: #2C3E50;
-    font-family: 'Courier New', monospace;
-    position: relative;
-    z-index: 2;
-    text-shadow: 
-        2px 2px 4px rgba(255, 255, 255, 0.8),
-        0 0 10px rgba(255, 255, 255, 0.5);
-    letter-spacing: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    padding: 15px 30px;
-    border-radius: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-// Update timer dengan progress bar
-function updateTimerDisplay() {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    
-    // Update progress bar
-    const progress = (timeLeft / 300) * 100; // 300 detik = 5 menit
-    document.documentElement.style.setProperty('--progress', `${progress}%`);
-    
-    if (timeLeft <= 60) {
-        timerElement.style.color = '#FF6B6B';
-        timerContainer.style.borderColor = '#FF6B6B';
-        timerContainer.style.background = 'rgba(255, 107, 107, 0.1)';
-    }
-}
-
-/* Score - Floating Cards */
-.score-container {
-    text-align: center;
-    margin: 12px 0;
-    padding: 18px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    border: 2px solid;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.1),
-        0 6px 20px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.score-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.15),
-        0 8px 25px rgba(0, 0, 0, 0.08);
-}
-
-/* Pemain 1 Score */
-.center-panel .score-container:nth-child(2) {
-    border-color: #FF6B6B;
-    background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
-}
-
-.center-panel .score-container:nth-child(2) .score-title {
-    color: #FF6B6B;
-    background: rgba(255, 107, 107, 0.1);
-    padding: 6px 16px;
-    border-radius: 25px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.center-panel .score-container:nth-child(2) .score {
-    color: #FF6B6B;
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    font-weight: bold;
-}
-
-/* Pemain 2 Score */
-.center-panel .score-container:nth-child(3) {
-    border-color: #4ECDC4;
-    background: linear-gradient(135deg, #ffffff 0%, #f0fffe 100%);
-}
-
-.center-panel .score-container:nth-child(3) .score-title {
-    color: #4ECDC4;
-    background: rgba(78, 205, 196, 0.1);
-    padding: 6px 16px;
-    border-radius: 25px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.center-panel .score-container:nth-child(3) .score {
-    color: #4ECDC4;
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    font-weight: bold;
-}
-
-/* Score Container untuk Pemain 1 */
-.center-panel .score-container:nth-child(2) {
-    border-color: #FF5252;
-    background: linear-gradient(135deg, #ffffff 0%, #ffebee 100%);
-}
-
-.center-panel .score-container:nth-child(2)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, #FF5252, #FF8A80);
-    border-radius: 15px 15px 0 0;
-}
-
-.center-panel .score-container:nth-child(2) .score-title {
-    color: #D32F2F;
-    background: linear-gradient(135deg, #FFEBEE, #FFFFFF);
-    padding: 4px 12px;
-    border-radius: 20px;
-    display: inline-block;
-    border: 2px solid #FFCDD2;
-    margin-bottom: 8px;
-}
-
-.center-panel .score-container:nth-child(2) .score {
-    color: #D32F2F;
-    font-size: clamp(2rem, 4.5vw, 2.8rem);
-    text-shadow: 1px 1px 3px rgba(211, 47, 47, 0.2);
-    background: rgba(255, 205, 210, 0.3);
-    padding: 8px;
-    border-radius: 10px;
-    border: 2px solid #FFCDD2;
-}
-
-/* Score Container untuk Pemain 2 */
-.center-panel .score-container:nth-child(3) {
-    border-color: #2196F3;
-    background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
-}
-
-.center-panel .score-container:nth-child(3)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, #2196F3, #64B5F6);
-    border-radius: 15px 15px 0 0;
-}
-
-.center-panel .score-container:nth-child(3) .score-title {
-    color: #1565C0;
-    background: linear-gradient(135deg, #E3F2FD, #FFFFFF);
-    padding: 4px 12px;
-    border-radius: 20px;
-    display: inline-block;
-    border: 2px solid #BBDEFB;
-    margin-bottom: 8px;
-}
-
-.center-panel .score-container:nth-child(3) .score {
-    color: #1565C0;
-    font-size: clamp(2rem, 4.5vw, 2.8rem);
-    text-shadow: 1px 1px 3px rgba(21, 101, 192, 0.2);
-    background: rgba(187, 222, 251, 0.3);
-    padding: 8px;
-    border-radius: 10px;
-    border: 2px solid #BBDEFB;
-}
-
-/* Hover effect */
-.score-container:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-        0 10px 25px rgba(0, 0, 0, 0.15),
-        inset 0 0 0 2px rgba(255, 255, 255, 0.9);
-}
-
-/* Animation untuk score update */
-@keyframes scoreUpdate {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-.score-update {
-    animation: scoreUpdate 0.5s ease;
-}
-        
-        .timer-title, .score-title {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-bottom: 8px;
-            color: #FF6F00;
-            font-weight: bold;
+        /* Timer - Glass Morphism (FIXED SIZE) */
+        .timer-container {
+            text-align: center;
+            margin: 8px 0;
+            padding: 15px 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        
+
+        .timer-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.1) 0%, 
+                    transparent 50%, 
+                    rgba(255, 255, 255, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .timer-title {
+            color: #2C3E50;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
         .timer {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: bold;
-            color: #FF6F00;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            color: #2C3E50;
             font-family: 'Courier New', monospace;
-            background: rgba(255, 243, 205, 0.8);
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #FFD700;
+            position: relative;
+            z-index: 2;
+            text-shadow: 
+                2px 2px 4px rgba(255, 255, 255, 0.8),
+                0 0 8px rgba(255, 255, 255, 0.4);
             letter-spacing: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
-        
-        .score {
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
+
+        /* Score - Floating Cards */
+        .score-container {
+            text-align: center;
+            margin: 10px 0;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            border: 2px solid;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 6px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .score-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.15),
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Pemain 1 Score */
+        .center-panel .score-container:nth-child(2) {
+            border-color: #FF6B6B;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+        }
+
+        .center-panel .score-container:nth-child(2) .score-title {
+            color: #FF6B6B;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 6px 16px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .center-panel .score-container:nth-child(2) .score {
+            color: #FF6B6B;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
             font-weight: bold;
-            color: #FF6F00;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Pemain 2 Score */
+        .center-panel .score-container:nth-child(3) {
+            border-color: #4ECDC4;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fffe 100%);
+        }
+
+        .center-panel .score-container:nth-child(3) .score-title {
+            color: #4ECDC4;
+            background: rgba(78, 205, 196, 0.1);
+            padding: 6px 16px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .center-panel .score-container:nth-child(3) .score {
+            color: #4ECDC4;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: bold;
+        }
+
+        /* Animation untuk score update */
+        @keyframes scoreUpdate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .score-update {
+            animation: scoreUpdate 0.5s ease;
         }
         
         /* Footer */
@@ -790,6 +672,7 @@ function updateTimerDisplay() {
             .timer-container, .score-container {
                 margin: 5px;
                 padding: 12px;
+                min-height: 80px;
             }
             
             .player-panel {
@@ -831,10 +714,6 @@ function updateTimerDisplay() {
             
             .tile {
                 font-size: clamp(1rem, 2vw, 1.4rem);
-            }
-            
-            .timer, .score {
-                font-size: 1.5rem;
             }
             
             .sound-controls {
@@ -966,7 +845,6 @@ function updateTimerDisplay() {
     </div>
 
     <script>
-        // JavaScript code remains the same as previous version
         document.addEventListener('DOMContentLoaded', function() {
             // Game variables
             let player1Score = 0;
@@ -1066,9 +944,13 @@ function updateTimerDisplay() {
                                     if (player1 === '1') {
                                         player1Score++;
                                         player1ScoreElement.textContent = player1Score;
+                                        player1ScoreElement.classList.add('score-update');
+                                        setTimeout(() => player1ScoreElement.classList.remove('score-update'), 500);
                                     } else {
                                         player2Score++;
                                         player2ScoreElement.textContent = player2Score;
+                                        player2ScoreElement.classList.add('score-update');
+                                        setTimeout(() => player2ScoreElement.classList.remove('score-update'), 500);
                                     }
                                     
                                     checkGameOver();
@@ -1129,7 +1011,10 @@ function updateTimerDisplay() {
                 
                 if (timeLeft <= 60) {
                     timerElement.style.color = '#FF6B6B';
-                    timerElement.style.animation = 'pulse 1s infinite';
+                    timerElement.style.textShadow = '0 0 10px #FF6B6B, 0 0 20px #FF6B6B';
+                } else {
+                    timerElement.style.color = '#2C3E50';
+                    timerElement.style.textShadow = '2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(255, 255, 255, 0.4)';
                 }
             }
 
@@ -1163,8 +1048,8 @@ function updateTimerDisplay() {
                 player1ScoreElement.textContent = player2ScoreElement.textContent = '0';
                 timeLeft = 300;
                 updateTimerDisplay();
-                timerElement.style.color = '#FF6F00';
-                timerElement.style.animation = 'none';
+                timerElement.style.color = '#2C3E50';
+                timerElement.style.textShadow = '2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(255, 255, 255, 0.4)';
                 
                 player1Grid.innerHTML = '';
                 player2Grid.innerHTML = '';
