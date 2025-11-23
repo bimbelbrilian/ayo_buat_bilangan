@@ -733,14 +733,18 @@ footer {
     border: 2px solid #E0E0E0;
     backdrop-filter: blur(10px);
     flex-shrink: 0;
+    
+    /* --- PERUBAHAN UTAMA: GANTI space-between MENJADI center --- */
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Memusatkan konten secara horizontal */
     align-items: center;
+    /* Tambahkan gap agar konten footer-left/right tidak terlalu rapat */
+    gap: 20px; 
 }
 
 .footer-left, .footer-right {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 footer a, .menu-btn {
