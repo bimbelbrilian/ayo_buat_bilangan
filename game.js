@@ -40,27 +40,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Asumsi fungsi utilitas (shuffleArray, checkOrientation, playMatchSound, dll.) diakses secara global.
 
+    // --- FUNGSI BARU: MENENTUKAN NILAI MINIMUM TILE BERDASARKAN TARGET ---
+    function getMinTileValue(target) {
+        if (target >= 500) return 100;
+        if (target >= 200) return 50;
+        if (target >= 75) return 15;
+        if (target >= 40) return 10;
+        if (target >= 30) return 5;
+        return 1; 
+    }
+
     // ==============================================
     // === 2. FUNGSI GENERATOR DAN LOGIKA TILE ===
     // ==============================================
 
     /**
      * Menghasilkan array angka yang sudah di-shuffle untuk satu set 30 ubin (15 pasang).
-     * Set ini DIJAMIN memiliki 15 pasang yang lengkap.
+     * Set ini DIJAMIN memiliki 15 pasang yang lengkap dan menghormati batas minimum leveling.
      */
     function generateBalancedTileSet(target) {
         const uniquePairs = [];
+        const minVal = getMinTileValue(target); // Dapatkan batas minimum
         
         // 1. Buat daftar semua pasangan unik yang mungkin (i dan target-i)
-        for (let i = 1; i <= target; i++) {
+        // Dimulai dari minVal, bukan 1
+        for (let i = minVal; i <= target; i++) {
             const complement = target - i;
-            if (i <= complement && complement >= 1) { 
+            
+            // Validasi: i <= complement (mencegah duplikasi) DAN complement >= minVal
+            if (i <= complement && complement >= minVal) { 
                  uniquePairs.push([i, complement]);
+            }
+            // Optimasi: Hentikan perulangan setelah mencapai titik tengah target
+            if (i >= target / 2) {
+                break;
             }
         }
         
         if (uniquePairs.length === 0) {
-            console.error("Target terlalu kecil, tidak ada pasangan yang mungkin.");
+            console.error("Target terlalu kecil atau minVal terlalu besar, tidak ada pasangan yang mungkin.");
             return [];
         }
 
@@ -95,22 +113,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    /**
-     * Membuat 30 ubin (kartu) untuk grid pemain tertentu dari array angka yang sudah balance.
-     */
-    function createTiles(player, numbers) {
-        const grid = player === 'player1' ? player1Grid : player2Grid;
-        grid.innerHTML = '';
+ /**
+ * Membuat 30 ubin (kartu) untuk grid pemain tertentu dari array angka yang sudah balance.
+ */
+function createTiles(player, numbers) {
+    const grid = player === 'player1' ? player1Grid : player2Grid;
+    grid.innerHTML = '';
+    
+    numbers.forEach((number) => {
+        // Logika Siklus Warna (Formula: (nilai - 1) MODULO 20 + 1)
+        const colorIndex = (number - 1) % 20 + 1;
+
+        // --- KODE BARU: HANYA BUAT SATU ELEMEN TILE ---
+        const tile = document.createElement('div');
         
-        numbers.forEach((number) => {
-            const tile = document.createElement('div');
-            tile.className = `tile card-variant-${(number % 20) + 1}`;
-            tile.dataset.value = number;
-            tile.textContent = number;
-            tile.addEventListener('click', () => handleTileClick(player, tile));
-            grid.appendChild(tile);
-        });
-    }
+        // Terapkan dua kelas untuk spesifisitas tinggi di CSS
+        tile.className = `tile card-variant-${colorIndex}`; 
+        
+        // Data value dan konten angka diletakkan langsung di tile
+        tile.dataset.value = number; 
+        tile.textContent = number; 
+        
+        // Tambahkan listener klik
+        tile.addEventListener('click', () => handleTileClick(player, tile));
+        grid.appendChild(tile);
+    });
+}
 
     /**
      * Menangani klik pada ubin.
