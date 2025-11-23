@@ -1186,164 +1186,164 @@ footer a:hover, .menu-btn:hover {
 /* ============================================== */
 
 /* 1. Varian Hijau Cerah */
-.card-variant-1 .card-back {
+.tile.card-variant-1 {
     background: linear-gradient(135deg, #A8E6CF, #DFFFDF); 
     color: #00796B; border: 3px solid #66BB6A;
     box-shadow: 0 6px 0 #66BB6A, 0 0 15px #C5E1A5;
 }
-.card-variant-1:hover .card-back { box-shadow: 0 4px 0 #66BB6A, 0 0 20px #81C784; }
+.tile.card-variant-1:hover { box-shadow: 0 4px 0 #66BB6A, 0 0 20px #81C784; }
 
 /* 2. Varian Biru Laut */
-.card-variant-2 .card-back {
+.tile.card-variant-2 {
     background: linear-gradient(135deg, #BBDEFB, #E3F2FD); 
     color: #1565C0; border: 3px solid #42A5F5;
     box-shadow: 0 6px 0 #42A5F5, 0 0 15px #90CAF9;
 }
-.card-variant-2:hover .card-back { box-shadow: 0 4px 0 #42A5F5, 0 0 20px #64B5F6; }
+.tile.card-variant-2:hover { box-shadow: 0 4px 0 #42A5F5, 0 0 20px #64B5F6; }
 
 /* 3. Varian Ungu Magenta */
-.card-variant-3 .card-back {
+.tile.card-variant-3 {
     background: linear-gradient(135deg, #E1BEE7, #F3E5F5); 
     color: #6A1B9A; border: 3px solid #AB47BC;
     box-shadow: 0 6px 0 #AB47BC, 0 0 15px #CE93D8;
 }
-.card-variant-3:hover .card-back { box-shadow: 0 4px 0 #AB47BC, 0 0 20px #BA68C8; }
+.tile.card-variant-3:hover { box-shadow: 0 4px 0 #AB47BC, 0 0 20px #BA68C8; }
 
 /* 4. Varian Oranye Hangat */
-.card-variant-4 .card-back {
+.tile.card-variant-4 {
     background: linear-gradient(135deg, #FFCC80, #FFE0B2); 
     color: #E65100; border: 3px solid #FFA726;
     box-shadow: 0 6px 0 #FFA726, 0 0 15px #FFB74D;
 }
-.card-variant-4:hover .card-back { box-shadow: 0 4px 0 #FFA726, 0 0 20px #FFB74D; }
+.tile.card-variant-4:hover { box-shadow: 0 4px 0 #FFA726, 0 0 20px #FFB74D; }
 
 /* 5. Varian Merah Muda Cerah */
-.card-variant-5 .card-back {
+.tile.card-variant-5 {
     background: linear-gradient(135deg, #F8BBD0, #FFEBEE); 
     color: #C2185B; border: 3px solid #F06292;
     box-shadow: 0 6px 0 #F06292, 0 0 15px #F48FB1;
 }
-.card-variant-5:hover .card-back { box-shadow: 0 4px 0 #F06292, 0 0 20px #F48FB1; }
+.tile.card-variant-5:hover { box-shadow: 0 4px 0 #F06292, 0 0 20px #F48FB1; }
 
 /* 6. Varian Toska (Teal) */
-.card-variant-6 .card-back {
+.tile.card-variant-6 {
     background: linear-gradient(135deg, #B2EBF2, #E0F7FA); 
     color: #00838F; border: 3px solid #26C6DA;
     box-shadow: 0 6px 0 #26C6DA, 0 0 15px #80DEEA;
 }
-.card-variant-6:hover .card-back { box-shadow: 0 4px 0 #26C6DA, 0 0 20px #4DD0E1; }
+.tile.card-variant-6:hover { box-shadow: 0 4px 0 #26C6DA, 0 0 20px #4DD0E1; }
 
 /* 7. Varian Kuning Lemon */
-.card-variant-7 .card-back {
+.tile.card-variant-7 {
     background: linear-gradient(135deg, #FFF9C4, #FFFDE7); 
     color: #FBC02D; border: 3px solid #FFEE58;
     box-shadow: 0 6px 0 #FFEE58, 0 0 15px #FFF59D;
 }
-.card-variant-7:hover .card-back { box-shadow: 0 4px 0 #FFEE58, 0 0 20px #FFEA00; }
+.tile.card-variant-7:hover { box-shadow: 0 4px 0 #FFEE58, 0 0 20px #FFEA00; }
 
 /* 8. Varian Abu-abu Dingin */
-.card-variant-8 .card-back {
+.tile.card-variant-8 {
     background: linear-gradient(135deg, #CFD8DC, #ECEFF1); 
     color: #455A64; border: 3px solid #90A4AE;
     box-shadow: 0 6px 0 #90A4AE, 0 0 15px #B0BEC5;
 }
-.card-variant-8:hover .card-back { box-shadow: 0 4px 0 #90A4AE, 0 0 20px #AAB5BA; }
+.tile.card-variant-8:hover { box-shadow: 0 4px 0 #90A4AE, 0 0 20px #AAB5BA; }
 
 /* 9. Varian Hijau Mint */
-.card-variant-9 .card-back {
+.tile.card-variant-9 {
     background: linear-gradient(135deg, #B9FBC0, #D0FFC0); 
     color: #1B5E20; border: 3px solid #4CAF50;
     box-shadow: 0 6px 0 #4CAF50, 0 0 15px #A5D6A7;
 }
-.card-variant-9:hover .card-back { box-shadow: 0 4px 0 #4CAF50, 0 0 20px #81C784; }
+.tile.card-variant-9:hover { box-shadow: 0 4px 0 #4CAF50, 0 0 20px #81C784; }
 
 /* 10. Varian Indigo Pastel */
-.card-variant-10 .card-back {
+.tile.card-variant-10 {
     background: linear-gradient(135deg, #C5CAE9, #E8EAF6); 
     color: #303F9F; border: 3px solid #7986CB;
     box-shadow: 0 6px 0 #7986CB, 0 0 15px #9FA8DA;
 }
-.card-variant-10:hover .card-back { box-shadow: 0 4px 0 #7986CB, 0 0 20px #9FA8DA; }
+.tile.card-variant-10:hover { box-shadow: 0 4px 0 #7986CB, 0 0 20px #9FA8DA; }
 
 /* 11. Varian Emas Cerah */
-.card-variant-11 .card-back {
+.tile.card-variant-11 {
     background: linear-gradient(135deg, #FFEB3B, #FFF59D); 
     color: #FF8F00; border: 3px solid #FFC107;
     box-shadow: 0 6px 0 #FFC107, 0 0 15px #FFE082;
 }
-.card-variant-11:hover .card-back { box-shadow: 0 4px 0 #FFC107, 0 0 20px #FFCA28; }
+.tile.card-variant-11:hover { box-shadow: 0 4px 0 #FFC107, 0 0 20px #FFCA28; }
 
 /* 12. Varian Violet Listrik */
-.card-variant-12 .card-back {
+.tile.card-variant-12 {
     background: linear-gradient(135deg, #E6A9FF, #F4D3FF); 
     color: #7B1FA2; border: 3px solid #D500F9;
     box-shadow: 0 6px 0 #D500F9, 0 0 15px #EA80FC;
 }
-.card-variant-12:hover .card-back { box-shadow: 0 4px 0 #D500F9, 0 0 20px #C700FF; }
+.tile.card-variant-12:hover { box-shadow: 0 4px 0 #D500F9, 0 0 20px #C700FF; }
 
 /* 13. Varian Hijau Zaitun */
-.card-variant-13 .card-back {
+.tile.card-variant-13 {
     background: linear-gradient(135deg, #DCE775, #F0F4C3); 
     color: #689F38; border: 3px solid #AEEA00;
     box-shadow: 0 6px 0 #AEEA00, 0 0 15px #C6FF00;
 }
-.card-variant-13:hover .card-back { box-shadow: 0 4px 0 #AEEA00, 0 0 20px #B2FF59; }
+.tile.card-variant-13:hover { box-shadow: 0 4px 0 #AEEA00, 0 0 20px #B2FF59; }
 
 /* 14. Varian Cokelat Hangat */
-.card-variant-14 .card-back {
+.tile.card-variant-14 {
     background: linear-gradient(135deg, #D7CCC8, #EDE7F6); 
     color: #6D4C41; border: 3px solid #A1887F;
     box-shadow: 0 6px 0 #A1887F, 0 0 15px #BCAAA4;
 }
-.card-variant-14:hover .card-back { box-shadow: 0 4px 0 #A1887F, 0 0 20px #A98C7F; }
+.tile.card-variant-14:hover { box-shadow: 0 4px 0 #A1887F, 0 0 20px #A98C7F; }
 
 /* 15. Varian Cyan Pucat */
-.card-variant-15 .card-back {
+.tile.card-variant-15 {
     background: linear-gradient(135deg, #80DEEA, #E0F7FA); 
     color: #0097A7; border: 3px solid #4DD0E1;
     box-shadow: 0 6px 0 #4DD0E1, 0 0 15px #84FFFF;
 }
-.card-variant-15:hover .card-back { box-shadow: 0 4px 0 #4DD0E1, 0 0 20px #4DD0E1; }
+.tile.card-variant-15:hover { box-shadow: 0 4px 0 #4DD0E1, 0 0 20px #4DD0E1; }
 
 /* 16. Varian Merah Bata */
-.card-variant-16 .card-back {
+.tile.card-variant-16 {
     background: linear-gradient(135deg, #FFCDD2, #FFEBEE); 
     color: #D32F2F; border: 3px solid #EF5350;
     box-shadow: 0 6px 0 #EF5350, 0 0 15px #FFCDD2;
 }
-.card-variant-16:hover .card-back { box-shadow: 0 4px 0 #EF5350, 0 0 20px #FF8A80; }
+.tile.card-variant-16:hover { box-shadow: 0 4px 0 #EF5350, 0 0 20px #FF8A80; }
 
 /* 17. Varian Hijau Limau */
-.card-variant-17 .card-back {
+.tile.card-variant-17 {
     background: linear-gradient(135deg, #F0F4C3, #F9FBE7); 
     color: #AFB42B; border: 3px solid #C0CA33;
     box-shadow: 0 6px 0 #C0CA33, 0 0 15px #E6EE9C;
 }
-.card-variant-17:hover .card-back { box-shadow: 0 4px 0 #C0CA33, 0 0 20px #DCE775; }
+.tile.card-variant-17:hover { box-shadow: 0 4px 0 #C0CA33, 0 0 20px #DCE775; }
 
 /* 18. Varian Biru Navy Tua */
-.card-variant-18 .card-back {
+.tile.card-variant-18 {
     background: linear-gradient(135deg, #BBDEFB, #E3F2FD); 
     color: #1A237E; border: 3px solid #5C6BC0;
     box-shadow: 0 6px 0 #5C6BC0, 0 0 15px #9FA8DA;
 }
-.card-variant-18:hover .card-back { box-shadow: 0 4px 0 #5C6BC0, 0 0 20px #90CAF9; }
+.tile.card-variant-18:hover { box-shadow: 0 4px 0 #5C6BC0, 0 0 20px #90CAF9; }
 
 /* 19. Varian Peach Lembut */
-.card-variant-19 .card-back {
+.tile.card-variant-19 {
     background: linear-gradient(135deg, #FFCCBC, #FFEBEE); 
     color: #FF7043; border: 3px solid #FF8A65;
     box-shadow: 0 6px 0 #FF8A65, 0 0 15px #FFAB91;
 }
-.card-variant-19:hover .card-back { box-shadow: 0 4px 0 #FF8A65, 0 0 20px #FF9E80; }
+.tile.card-variant-19:hover { box-shadow: 0 4px 0 #FF8A65, 0 0 20px #FF9E80; }
 
 /* 20. Varian Biru Langit */
-.card-variant-20 .card-back {
+.tile.card-variant-20 {
     background: linear-gradient(135deg, #B3E5FC, #E1F5FE); 
     color: #0288D1; border: 3px solid #4FC3F7;
     box-shadow: 0 6px 0 #4FC3F7, 0 0 15px #81D4FA;
 }
-.card-variant-20:hover .card-back { box-shadow: 0 4px 0 #4FC3F7, 0 0 20px #4FC3F7; }
+.tile.card-variant-20:hover { box-shadow: 0 4px 0 #4FC3F7, 0 0 20px #4FC3F7; }
 
 /* Untuk menyembunyikan kartu yang cocok tanpa mengubah tata letak */
 .tile.is-hidden {
