@@ -149,18 +149,21 @@ function createTiles(player, numbers) {
 
         if (typeof playSelectSound === 'function') playSelectSound();
 
-        // Deseleksi ubin yang sudah dipilih pemain lain
-        const otherPlayer = player === 'player1' ? 'player2' : 'player1';
-        if (selectedTiles[otherPlayer].length > 0) {
-             selectedTiles[otherPlayer].forEach(t => t.classList.remove('selected'));
-             selectedTiles[otherPlayer] = [];
-        }
+        // --- KODE LAMA YANG MENGHAPUS PILIHAN PEMAIN LAIN DIHILANGKAN ---
+        // Deseleksi ubin yang sudah dipilih pemain lain (INI YANG MENYEBABKAN MASALAH)
+        // const otherPlayer = player === 'player1' ? 'player2' : 'player1';
+        // if (selectedTiles[otherPlayer].length > 0) {
+        //      selectedTiles[otherPlayer].forEach(t => t.classList.remove('selected'));
+        //      selectedTiles[otherPlayer] = [];
+        // }
+        // --------------------------------------------------------------------
 
         // Toggle selected state
         if (tile.classList.contains('selected')) {
             tile.classList.remove('selected');
             selectedTiles[player] = selectedTiles[player].filter(t => t !== tile);
         } else {
+            // Memastikan pemain hanya dapat memilih maksimal 2 ubin miliknya sendiri
             if (selectedTiles[player].length < 2) {
                 tile.classList.add('selected');
                 selectedTiles[player].push(tile);
