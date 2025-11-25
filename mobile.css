@@ -19,6 +19,10 @@
         .container, .main-menu:not(.hidden), .winner-popup.active {
             display: flex;
         }
+
+	.winner-popup.active {
+            display: flex !important;
+        }
     }
 }
 
@@ -106,6 +110,45 @@
     .score {
         font-size: 1.5rem;
     }
+
+    .winner-popup.active {
+        display: flex !important;
+        z-index: 10000;
+    }
+    
+    .winner-content {
+        max-width: 90vw;
+        max-height: 80vh;
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .winner-title {
+        font-size: 1.8em;
+    }
+    
+    .winner-message {
+        font-size: 2.5em;
+    }
+    
+    .winner-scores {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .player-score {
+        min-width: 120px;
+        padding: 15px 20px;
+    }
+    
+    .player-score-value {
+        font-size: 2.5em;
+    }
+    
+    .popup-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
     
     footer {
         padding: 8px;
@@ -121,6 +164,11 @@
     
     .orientation-warning {
         display: flex;
+    }
+	
+    .winner-popup.active {
+        display: flex !important;
+        z-index: 10000;
     }
 }
 
@@ -152,6 +200,42 @@
     .tile {
         font-size: clamp(0.8rem, 2vw, 1.1rem);
     }
+	.winner-content {
+        padding: 15px;
+    }
+    
+    .winner-title {
+        font-size: 1.5em;
+    }
+    
+    .winner-message {
+        font-size: 2em;
+    }
+    
+    .winner-scores {
+        gap: 10px;
+    }
+    
+    .winner-scores::after {
+        font-size: 1.5em;
+        padding: 3px 8px;
+    }
+    
+    .player-score {
+        min-width: 100px;
+        padding: 10px 15px;
+    }
+    
+    .player-score-value {
+        font-size: 2em;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+
 }
 
 /* Untuk menyembunyikan kartu yang cocok tanpa mengubah tata letak */
