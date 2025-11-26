@@ -10,6 +10,17 @@
         display: none;
     }
     
+    /* ✅ PERBAIKAN: Gunakan #winner-popup bukan .winner-popup */
+    #winner-popup {
+        display: none;
+        z-index: 10000;
+    }
+    
+    #winner-popup.active {
+        display: flex !important;
+        z-index: 10000;
+    }
+    
     /* Show container only in landscape mode */
     @media (orientation: landscape) {
         .orientation-warning {
@@ -21,7 +32,7 @@
         }
         
         /* ✅ PASTIKAN winner-popup tetap tampil */
-        .winner-popup.active {
+        #winner-popup.active {
             display: flex !important;
             z-index: 10000;
         }
@@ -118,13 +129,13 @@
         border-radius: 10px;
     }
     
-    /* ✅ STYLING KHUSUS UNTUK POPUP PEMENANG DI MOBILE LANDSCAPE */
-    .winner-popup.active {
+    /* ✅ PERBAIKAN: Gunakan #winner-popup */
+    #winner-popup.active {
         display: flex !important;
         z-index: 10000;
     }
     
-    .winner-content {
+    .popup-content {
         max-width: 90vw;
         max-height: 80vh;
         padding: 20px;
@@ -132,7 +143,7 @@
         transform: scale(0.9);
     }
     
-    .winner-popup.active .winner-content {
+    #winner-popup.active .popup-content {
         transform: scale(1);
     }
     
@@ -191,14 +202,14 @@
         display: flex;
     }
     
-    /* ✅ BIARKAN winner popup tetap bisa tampil */
-    .winner-popup.active {
+    /* ✅ PERBAIKAN: Gunakan #winner-popup */
+    #winner-popup.active {
         display: flex !important;
         z-index: 10000;
     }
     
     /* Styling untuk portrait mode jika popup perlu ditampilkan */
-    .winner-content {
+    .popup-content {
         max-width: 95vw;
         max-height: 90vh;
         padding: 25px;
@@ -274,8 +285,13 @@
         font-size: clamp(0.8rem, 2vw, 1.1rem);
     }
     
-    /* ✅ STYLING UNTUK SMALL MOBILE LANDSCAPE */
-    .winner-content {
+    /* ✅ PERBAIKAN: Gunakan #winner-popup */
+    #winner-popup.active {
+        display: flex !important;
+        z-index: 10000;
+    }
+    
+    .popup-content {
         padding: 15px;
         max-width: 95vw;
     }
@@ -317,7 +333,7 @@
 
 /* Very Small Mobile Screens */
 @media (max-width: 360px) and (orientation: landscape) {
-    .winner-content {
+    .popup-content {
         padding: 12px;
     }
     
@@ -350,7 +366,7 @@
 
 /* Tablet Landscape */
 @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-    .winner-content {
+    .popup-content {
         max-width: 80vw;
         padding: 30px;
     }
@@ -385,8 +401,51 @@
 
 /* ✅ OVERRIDE TAMBAHAN UNTUK MEMASTIKAN POPUP SELALU TAMPIL */
 @media (max-width: 1024px) {
-    .winner-popup.active {
+    #winner-popup.active {
         display: flex !important;
         z-index: 10000 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(0, 0, 0, 0.95) !important;
     }
+    
+    /* Pastikan popup content visible */
+    .popup-content {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* ✅ FIX CRITICAL: Base styles untuk popup */
+#winner-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#winner-popup.active {
+    display: flex !important;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
